@@ -6,6 +6,9 @@ import Kingfisher
 
 public struct DGImageViewer: View {
     let url: String
+    
+    @State private var image: Image?
+    @State private var height: CGFloat = 100
 
     @State private var scale: CGFloat = 1
     @State private var lastScale: CGFloat = 1
@@ -20,17 +23,26 @@ public struct DGImageViewer: View {
     public var body: some View {
         GeometryReader { proxy in
             ZStack {
-                KFImage(.init(string: url))
+                image?
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFill()
                     .scaleEffect(scale)
                     .offset(x: offset.x, y: offset.y)
                     .gesture(makeDragGesture(size: proxy.size))
                     .gesture(makeMagnificationGesture(size: proxy.size))
+                    .background(ViewGeometry())
+                    .onPreferenceChange(ViewSizeKey.self) {
+                        height = $0.height
+                    }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
+            .onAppear {
+                Task {
+                    self.image = try await ImageManager.image(from: url)
+                }
+            }
         }
+        .frame(height: height)
     }
 
     private func makeMagnificationGesture(size: CGSize) -> some Gesture {
