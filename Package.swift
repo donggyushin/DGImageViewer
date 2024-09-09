@@ -13,7 +13,7 @@ let package = Package(
             targets: ["DGImageViewer"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/dmytro-anokhin/url-image.git", from: "3.0.0")
+        .package(url: "https://github.com/onevcat/Kingfisher", from: "7.12.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -21,7 +21,7 @@ let package = Package(
         .target(
             name: "DGImageViewer",
             dependencies: [
-                .product(name: "URLImage", package: "url-image")
+                .product(name: "Kingfisher", package: "Kingfisher")
             ]
         ),
         .testTarget(
