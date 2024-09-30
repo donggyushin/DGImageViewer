@@ -1,13 +1,13 @@
 {
-  "originHash" : "6ecd9b1e837440ab511ac1cf0f1c98fc4b783b8d60291c5744cbe799199973c7",
+  "originHash" : "9914f83490e5f333823f891a9346134c858f5245db93759cedaf77538d2db8e8",
   "pins" : [
     {
-      "identity" : "url-image",
+      "identity" : "kingfisher",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/dmytro-anokhin/url-image.git",
+      "location" : "https://github.com/onevcat/Kingfisher",
       "state" : {
-        "revision" : "4042f955f1fdff00ced85545e1eecdbf969b5cd0",
-        "version" : "3.1.1"
+        "revision" : "33696a71dd4d71f1b0f781ade11a48ba5549581a",
+        "version" : "8.0.3"
       }
     }
   ],
