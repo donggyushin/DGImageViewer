@@ -13,7 +13,7 @@ let package = Package(
             targets: ["DGImageViewer"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/onevcat/Kingfisher", from: "7.12.0")
+        .package(url: "https://github.com/onevcat/Kingfisher", from: "8.0.3")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
