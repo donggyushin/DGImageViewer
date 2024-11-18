@@ -14,6 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         DGImageViewer(url: url)
+            .set(preventDragGestureWhenScale1: true)
             .clipShape(RoundedRectangle(cornerRadius: 17))
     }
 }

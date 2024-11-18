@@ -6,6 +6,7 @@ import Kingfisher
 
 public struct DGImageViewer: View {
     let url: String
+    var preventDragGestureWhenScale1: Bool = false
     
     @State private var image: Image?
     @State private var height: CGFloat = 100
@@ -70,6 +71,9 @@ public struct DGImageViewer: View {
     private func makeDragGesture(size: CGSize) -> some Gesture {
         DragGesture()
             .onChanged { value in
+                if preventDragGestureWhenScale1 {
+                    guard scale > 1 else { return }
+                }
                 let diff = CGPoint(
                     x: value.translation.width - lastTranslation.width,
                     y: value.translation.height - lastTranslation.height
@@ -103,5 +107,13 @@ public struct DGImageViewer: View {
             }
         }
         self.lastTranslation = .zero
+    }
+}
+
+public extension DGImageViewer {
+    func set(preventDragGestureWhenScale1: Bool) -> Self {
+        var copy = self
+        copy.preventDragGestureWhenScale1 = preventDragGestureWhenScale1
+        return copy
     }
 }
