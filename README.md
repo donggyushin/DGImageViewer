@@ -14,7 +14,7 @@ Once you have your Swift package set up, adding `DGImageViewer` as a dependency 
 
 ```
 dependencies: [
-   .package(url: "https://github.com/donggyushin/DGImageViewer", .upToNextMajor(from: "1.0.2"))
+   .package(url: "https://github.com/donggyushin/DGImageViewer", .upToNextMajor(from: "1.0.3"))
 ]
 ```
 

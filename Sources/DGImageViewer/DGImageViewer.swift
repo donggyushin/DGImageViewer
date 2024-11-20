@@ -30,6 +30,13 @@ public struct DGImageViewer: View {
                     .scaleEffect(scale)
                     .offset(x: offset.x, y: offset.y)
                     .gesture(makeDragGesture(size: proxy.size))
+                    .disabled({
+                        if preventDragGestureWhenScale1 {
+                            return scale == 1
+                        } else {
+                            return false
+                        }
+                    }())
                     .gesture(makeMagnificationGesture(size: proxy.size))
                     .background(ViewGeometry())
                     .onPreferenceChange(ViewSizeKey.self) {
